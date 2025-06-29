@@ -1,0 +1,78 @@
+
+
+Lambda Function:
+    demo_lambda_auth_backend
+	python 
+	
+	create function
+	
+	code:
+	  AWS Lambda authorizer
+	 
+test
+sampletest
+
+
+2.
+  API Gateway:
+
+   REST API --> REST --> New API --> demo_lambdaauthorizer
+   
+  create API 
+
+  Resource:
+       students
+
+  METHOD: GET 
+  Integration Type:  demo_lambda_auth_backend
+
+
+API GW --> LAMBDA function 
+
+  TEST 
+  
+  DEPLOY : dev 
+  deploy API--> dev
+  API GW + Lambda 
+         Invoke URL:
+  
+
+3.
+ Lambda Authorizer:
+ 
+ API GW :
+  Authorizers: 
+       Create New AUthorizer
+	      demo_lambda_authorizer 
+		  
+
+  4.  FIrst will create demo_lambda_authorizater 
+  
+ Lambda:
+       demo_lambda_authorizer_function 
+       Python 
+	   
+4. API GW 
+      Authorizer: 	 demo_lambda_authorizer_function 
+      autorizationtoken	  
+       No cache 
+
+   Test Authoriazation
+
+5.
+ 
+ Lambda Function: Authorization
+ 
+  Key event: autorizationtoken
+  
+
+6.
+    
+
+    
+     COGNITO:
+	 -------------------
+	 
+	 
+	   
+	  

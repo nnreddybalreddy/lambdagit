@@ -1,0 +1,51 @@
+def lambda_handler(event, context):
+    
+#1.Log the event
+   print("The event data is below")
+   print(event)
+   authorization = 'Deny'
+   
+#2. Validate the token
+   if event['authorization']=='123456':
+       authorization = 'Allow'
+       
+   else:
+       authorization='Deny'   
+
+#3 . Generate the IAM Policy
+
+   authorizationpolicy = {"principalId": "narenpolicy","policyDocument": {"Version": "2012-10-17","Statement": [{"Action": "execute-api:Invoke","Effect": authorization,"Resource": ["arn:aws:execute-api:us-east-1:905418111046:otn5e9wxa5/Dev/GET/students"]}]}}
+   return authorizationpolicy       
+   
+
+
+       
+
+Status: Succeeded
+Test Event Name: sampletest
+
+Response:
+{
+  "principalId": "narenpolicy",
+  "policyDocument": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "execute-api:Invoke",
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:execute-api:us-east-1:905418111046:otn5e9wxa5/Dev/GET/students"
+        ]
+      }
+    ]
+  }
+}
+
+Function Logs:
+START RequestId: e3173ba7-6e94-4618-85f3-603dcc565283 Version: $LATEST
+The event data is below
+{'authorization': '123456'}
+END RequestId: e3173ba7-6e94-4618-85f3-603dcc565283
+REPORT RequestId: e3173ba7-6e94-4618-85f3-603dcc565283	Duration: 2.31 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 34 MB	Init Duration: 90.21 ms
+
+Request ID: e3173ba7-6e94-4618-85f3-603dcc565283
